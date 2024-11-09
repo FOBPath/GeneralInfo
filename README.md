@@ -119,14 +119,19 @@ User Job Search Page (to search for jobs)
 User Saved Jobs Page (to check saved jobs)
 
 ## Wireframes
+
+ Digital Wireframes & Mockups
+ 
 <img width="910" alt="Screen Shot 2024-11-08 at 7 35 27 PM" src="https://github.com/user-attachments/assets/9869c0d6-3421-417f-bd30-f2e9fe370611">
 
-[BONUS] Digital Wireframes & Mockups
-[BONUS] Interactive Prototype
+
+
 
 Milestone 2 - Build Sprint 1 (Unit 8)
 GitHub Project board
-[Add screenshot of your Project Board with three milestones visible in this section] 
+
+![image](https://github.com/user-attachments/assets/4af22395-a5fe-4bd3-9abb-35a96020b2d0)
+
 
 Issue cards
 [Add screenshot of your Project Board with the issues that you've been working on for this unit's milestone] 
