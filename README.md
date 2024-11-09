@@ -119,9 +119,7 @@ User Job Search Page (to search for jobs)
 User Saved Jobs Page (to check saved jobs)
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section] 
-
-
+<img width="910" alt="Screen Shot 2024-11-08 at 7 35 27 PM" src="https://github.com/user-attachments/assets/9869c0d6-3421-417f-bd30-f2e9fe370611">
 
 [BONUS] Digital Wireframes & Mockups
 [BONUS] Interactive Prototype
