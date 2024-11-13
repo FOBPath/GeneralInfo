@@ -23,25 +23,27 @@ Habit: Users will likely check the app multiple times daily during job hunts or 
 * Scope: V1 will focus on job listings, job searches, and saved job functionality. V2 could add personalized recommendations, user profiles with portfolios, and job application tracking. V3 could incorporate features like networking opportunities, company reviews, and salary insights.
 
 ## Product Spec
-1.User Features (Required and Optional)
+1. User Features (Required and Optional)
 
 Required Features
 
-1. User can sign up 
-2. User can login
-3. User can search for jobs
-4. User can save jobs
-5. Names of each Job
-6. Application tab
+* User can sign up 
+*  User can login
+* User can search for jobs
+* User can save jobs
+* Names of each Job
+* Application tab
 
 Optional Features
-1. Push Notifications for New Job Postings
-2. Company Profiles and Reviews
-3. Job Application Tracking
-4. Networking Opportunities and Events
+* Push Notifications for New Job Postings
+* Company Profiles and Reviews
+* Job Application Tracking
+* Networking Opportunities and Events
 
+   
 2. Screen Archetypes
-User Sign-Up Page
+   
+* User Sign-Up Page
 Associated Required Story:
 The user will be able to create a new account by providing necessary information (email, password, etc.) to access personalized job search features.
 
