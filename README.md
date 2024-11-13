@@ -35,16 +35,15 @@ Required Features
 6. Application tab
 
 Optional Features
-1.
-2. 
-3.
-4. 
+1. Push Notifications for New Job Postings
+2. Company Profiles and Reviews
+3. Job Application Tracking
+4. Networking Opportunities and Events
 
 2. Screen Archetypes
-
-> User Sign-Up Page
-> Associated Required Story:
-> The user will be able to create a new account by providing necessary information (email, password, etc.) to access personalized job search features.
+User Sign-Up Page
+Associated Required Story:
+The user will be able to create a new account by providing necessary information (email, password, etc.) to access personalized job search features.
 
 * User Profile Page
 Associated Required Story:
