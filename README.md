@@ -13,11 +13,14 @@ An app designed to help Computer Science and Engineering majors find job opportu
 App Evaluation
 
 Category: Job Search / Professional Networking
-Mobile:
-Story:The app addresses the pain point of finding tech-specific job opportunities among general listings. It tailors the job search experience to CS and Engineering students, making it easier to find relevant roles, internships, and networking events.
-Market: The primary market is CS and Engineering students from colleges and universities. Recent graduates and professionals seeking entry-level jobs and internships could also benefit. Partnering with tech companies to post jobs directly on the platform is a potential monetization strategy.
-Habit:Users will likely check the app multiple times daily during job hunts or internship searches. Push notifications for job postings, deadlines, or saved job updates increase engagement.
-Scope:V1 will focus on job listings, job searches, and saved job functionality. V2 could add personalized recommendations, user profiles with portfolios, and job application tracking. V3 could incorporate features like networking opportunities, company reviews, and salary insights.
+
+* Description: An app designed to help Computer Science and Engineering majors find job opportunities tailored to their specific fields. The app features intuitive navigation, a scrollable job feed, saved jobs functionality, and external links to job applications.
+* Category: Job Search / Professional Networking
+* Mobile: Essential for students on the go. The app is designed with a mobile-first approach, ensuring easy job browsing, saving jobs, and applying while commuting or between classes. Push notifications for job alerts and deadlines are available.
+* Story: The app addresses the pain point of finding tech-specific job opportunities among general listings. It tailors the job search experience to CS and Engineering students, making it easier to find relevant roles, internships, and networking events.
+* Market: The primary market is CS and Engineering students from colleges and universities. Recent graduates and professionals seeking entry-level jobs and internships could also benefit. Partnering with tech companies to post jobs directly on the platform is a potential monetization strategy.
+Habit: Users will likely check the app multiple times daily during job hunts or internship searches. Push notifications for job postings, deadlines, or saved job updates increase engagement.
+* Scope: V1 will focus on job listings, job searches, and saved job functionality. V2 could add personalized recommendations, user profiles with portfolios, and job application tracking. V3 could incorporate features like networking opportunities, company reviews, and salary insights.
 
 ## Product Spec
 1.User Features (Required and Optional)
