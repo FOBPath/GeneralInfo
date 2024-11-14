@@ -124,7 +124,13 @@ User Saved Jobs Page (to check saved jobs)
 
 ## Wireframes
 
- Digital Wireframes & Mockups
+Hand Skecthed WireFrames: 
+
+![image](https://github.com/user-attachments/assets/62697185-f094-433f-993a-811e72632b82)
+
+
+ Digital Wireframes & Mockups:
+ 
 
  ![image](https://github.com/user-attachments/assets/97ea27a3-d18a-461d-a3a8-5722163493be)
 
