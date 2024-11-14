@@ -126,7 +126,11 @@ User Saved Jobs Page (to check saved jobs)
 
 Hand Skecthed WireFrames: 
 
-![image](https://github.com/user-attachments/assets/62697185-f094-433f-993a-811e72632b82)
+
+
+<img width="585" alt="Screen Shot 2024-11-14 at 2 57 40 PM" src="https://github.com/user-attachments/assets/eceeb4d0-4138-4c87-8833-96539a02ec99">
+
+
 
 
  Digital Wireframes & Mockups:
