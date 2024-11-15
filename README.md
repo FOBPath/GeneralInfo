@@ -153,13 +153,18 @@ GitHub Project board
 
 ![image](https://github.com/user-attachments/assets/4af22395-a5fe-4bd3-9abb-35a96020b2d0)
 
+![image](https://github.com/user-attachments/assets/26accb8c-ded3-4a4c-a6fb-ee8551ed3bd1)
+
 
 Issue cards
-[Add screenshot of your Project Board with the issues that you've been working on for this unit's milestone] 
-[Add screenshot of your Project Board with the issues that you're working on in the NEXT sprint. It should include issues for next unit with assigned owners.] 
+![image](https://github.com/user-attachments/assets/27b9d47c-f065-4579-ac67-11f9f4915a37)
+
+
 
 Issues worked on this sprint
-List the issues you completed this sprint
+* Login Page 
+
+
 [Add giphy that shows current build progress for Milestone 2. Note: We will be looking for progression of work between Milestone 2 and 3. Make sure your giphys are not duplicated and clearly show the change from Sprint 1 to 2.]
 
 Milestone 3 - Build Sprint 2 (Unit 9)
