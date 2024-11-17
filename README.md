@@ -178,5 +178,8 @@ List any pending user stories / any user stories you decided to cut from the ori
 
 [Add video/gif of your current application that shows build progress] 
 
+![image](https://github.com/user-attachments/assets/1a7e509e-68f4-4147-bcc1-28537f52ea0c)
+
+
 App Demo Video
 Embed the YouTube/Vimeo link of your Completed Demo Day prep video
