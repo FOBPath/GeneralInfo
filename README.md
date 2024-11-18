@@ -162,7 +162,13 @@ Issue cards
 
 
 Issues worked on this sprint
-* Login Page 
+* Job Search Page
+* Saved Jobs Page
+* Profile Page 
+
+
+
+![image](https://github.com/user-attachments/assets/1a7e509e-68f4-4147-bcc1-28537f52ea0c)
 
 
 [Add giphy that shows current build progress for Milestone 2. Note: We will be looking for progression of work between Milestone 2 and 3. Make sure your giphys are not duplicated and clearly show the change from Sprint 1 to 2.]
@@ -178,7 +184,7 @@ List any pending user stories / any user stories you decided to cut from the ori
 
 [Add video/gif of your current application that shows build progress] 
 
-![image](https://github.com/user-attachments/assets/1a7e509e-68f4-4147-bcc1-28537f52ea0c)
+
 
 
 App Demo Video
