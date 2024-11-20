@@ -166,8 +166,8 @@ Issues worked on this sprint
 * Saved Jobs XML
 * Profile XML
 * Login Page
-
-
+* Home page
+* Create Account Page 
 
 <img width="292" alt="Screenshot 2024-11-20 at 2 36 29 PM" src="https://github.com/user-attachments/assets/505585e5-684a-4db7-84ae-e78e6245f9ee">
 
