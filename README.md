@@ -165,10 +165,22 @@ Issues worked on this sprint
 * Job Search XML
 * Saved Jobs XML
 * Profile XML
+* Login Page
 
 
 
-![image](https://github.com/user-attachments/assets/1a7e509e-68f4-4147-bcc1-28537f52ea0c)
+<img width="292" alt="Screenshot 2024-11-20 at 2 36 29 PM" src="https://github.com/user-attachments/assets/505585e5-684a-4db7-84ae-e78e6245f9ee">
+
+<img width="593" alt="Screenshot 2024-11-20 at 2 32 09 PM" src="https://github.com/user-attachments/assets/331e6e04-468d-47eb-9ab9-af3410b1cc87">
+
+<img width="539" alt="Screenshot 2024-11-20 at 2 32 59 PM 2" src="https://github.com/user-attachments/assets/57c36a91-c781-4c80-9cb0-792588b27a62"><img width="610" alt="Screenshot 2024-11-20 at 2 35 57 PM" src="https://github.com/user-attachments/assets/0713e809-fa21-4977-b0df-ab2bce53f61c">
+
+
+
+
+
+
+
 
 
 Milestone 3 - Build Sprint 2 (Unit 9)
