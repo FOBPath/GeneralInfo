@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Add your button states colors -->
+    <color name="button_pressed">#FF6200</color> <!-- Example: Orange for pressed -->
+    <color name="button_focused">#FF9800</color> <!-- Example: Lighter orange for focused -->
+    <color name="button_default">#6200EE</color> <!-- Example: Purple for default -->
+    <color name="white">#FFFFFF</color> <!-- White color -->
+    <color name="linkColor">#03A9F4</color> <!-- Example: Blue for a link -->
+    <color name="primaryColor">#6200EE</color> <!-- Example: Purple -->
+
 </resources>
