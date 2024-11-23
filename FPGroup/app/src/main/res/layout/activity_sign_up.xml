@@ -31,7 +31,7 @@
         android:id="@+id/passwordSignUpEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Create Password"
+        android:hint="Password"
         android:padding="12dp"
         android:layout_marginBottom="16dp"
         android:inputType="textPassword" />
@@ -41,7 +41,7 @@
         android:id="@+id/signUpButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Create"
+        android:text="Sign Up"
         android:backgroundTint="@color/primaryColor"
         android:textColor="@android:color/white"
         android:layout_marginBottom="16dp" />
