@@ -176,10 +176,11 @@ Issues worked on this sprint
 <img width="539" alt="Screenshot 2024-11-20 at 2 32 59 PM 2" src="https://github.com/user-attachments/assets/57c36a91-c781-4c80-9cb0-792588b27a62"><img width="610" alt="Screenshot 2024-11-20 at 2 35 57 PM" src="https://github.com/user-attachments/assets/0713e809-fa21-4977-b0df-ab2bce53f61c">
 
 
+![image](https://github.com/user-attachments/assets/c34fd51b-3bb1-40a0-981f-af26e14d1098)
 
 
 
-https://github.com/user-attachments/assets/338c488f-d29b-4fe5-b480-4527874fb719
+https://github.com/user-attachments/assets/d66c99f5-1457-4e60-9bed-9a70b8380ee4
 
 
 
