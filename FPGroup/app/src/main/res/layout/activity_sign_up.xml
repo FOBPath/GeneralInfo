@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:hint="Email"
         android:padding="12dp"
+        android:inputType="textEmailAddress"
         android:layout_marginBottom="16dp" />
 
     <!-- Password Input -->
@@ -42,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sign Up"
-        android:backgroundTint="@color/primaryColor"
+        android:backgroundTint="@color/design_default_color_primary_dark"
         android:textColor="@android:color/white"
         android:layout_marginBottom="16dp" />
 
