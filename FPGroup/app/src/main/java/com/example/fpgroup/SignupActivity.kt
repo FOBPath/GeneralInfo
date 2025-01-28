@@ -26,8 +26,12 @@ class SignupActivity : AppCompatActivity() {
                 // Simulate successful sign-up
                 Toast.makeText(this, "Sign-Up Successful!", Toast.LENGTH_SHORT).show()
 
+
+
+
                 // Navigate to MainActivity
                 val intent = Intent(this, MainActivity::class.java)
+                intent.putExtra("USER_EMAIL", email)
                 startActivity(intent)
                 finish()
             }
