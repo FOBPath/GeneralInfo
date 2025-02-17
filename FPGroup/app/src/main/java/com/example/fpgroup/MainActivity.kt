@@ -1,9 +1,10 @@
 package com.example.fpgroup
 
 import android.os.Bundle
-import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -11,7 +12,27 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val userEmail = intent.getStringExtra("USER_EMAIL")
+        val emailTextView: TextView = findViewById(R.id.emailTextView)
+        emailTextView.text = "Welcome, $userEmail"
 
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
+
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            val selectedFragment: Fragment = when (item.itemId) {
+                R.id.nav_home -> HomeFragment()
+                R.id.nav_profile -> ProfileFragment()
+                R.id.nav_settings -> SettingsFragment()
+                R.id.nav_jobs -> JobsFragment()  // Add JobsFragment here
+                else -> HomeFragment()
+            }
+
+            supportFragmentManager.beginTransaction().replace(R.id.fragment_container, selectedFragment).commit()
+            true
+        }
+
+
+        if (savedInstanceState == null) {
+            bottomNavigationView.selectedItemId = R.id.nav_home
+        }
     }
-
 }
