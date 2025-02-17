@@ -23,15 +23,9 @@ class SignupActivity : AppCompatActivity() {
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
             } else {
-                // Simulate successful sign-up
-                Toast.makeText(this, "Sign-Up Successful!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Sign-Up Successful! Please Log in.", Toast.LENGTH_SHORT).show()
 
-
-
-
-                // Navigate to MainActivity
-                val intent = Intent(this, MainActivity::class.java)
-                intent.putExtra("USER_EMAIL", email)
+                val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
                 finish()
             }
