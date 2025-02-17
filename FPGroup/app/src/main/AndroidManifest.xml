@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.fpgroup">
 
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
 
-        <!-- LoginActivity as the launcher -->
-        <activity
-            android:name="com.example.myapplication.LoginActivity"
+        <activity android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <!-- SignupActivity -->
-        <activity android:name="com.example.fpgroup.SignupActivity" />
+        <activity android:name=".LoginActivity"/>
+        <activity android:name=".SignupActivity"/>
+        <activity android:name=".MainActivity"/>
 
-        <!-- MainActivity -->
-        <activity android:name="com.example.fpgroup.MainActivity" />
     </application>
 </manifest>
+
