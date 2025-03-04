@@ -149,10 +149,14 @@ Hand Skecthed WireFrames:
 
  ![image](https://github.com/user-attachments/assets/15ecd1c5-2e1f-461f-aae9-a2de7caee988)
 
+
+ ###Storyboard
  
+The following storyboard illustrates the sequence of screens a user would navigate through when using the app. It highlights the user journey from signing up, logging in, searching for jobs, saving jobs, and applying for them.
 
+<img width="1013" alt="Screen Shot 2025-03-04 at 3 16 44 PM" src="https://github.com/user-attachments/assets/dc31fd46-a52e-449f-8af2-ee31baa1e650" />
 
-
+<img width="1001" alt="Screen Shot 2025-03-04 at 3 17 45 PM" src="https://github.com/user-attachments/assets/c4b72af4-92b3-4b5d-9a9f-b6f2be01df75" />
 
 Milestone 2 - Build Sprint 1 (Unit 8)
 GitHub Project board
