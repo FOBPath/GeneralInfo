@@ -124,7 +124,7 @@ User Job Search Page (to search for jobs)
 User Saved Jobs Page (to check saved jobs)
 
 ### Use Case Diagram
-Below is the Use Case Diagram illustrating the main user interactions with the application.
+Below is the Use Case Diagram illustrating the main user interactions with the application:
 
 ![image](https://github.com/user-attachments/assets/2591b023-65c6-42ae-b58b-758fad629c4e)
 
@@ -153,7 +153,7 @@ Hand Skecthed WireFrames:
 
  ## Storyboard
  
-The following storyboard illustrates the sequence of screens a user would navigate through when using the app. It highlights the user journey from signing up, logging in, searching for jobs, saving jobs, and applying for them.
+The following storyboard illustrates the sequence of screens a user would navigate through when using the app. It highlights the user journey from signing up, logging in, searching for jobs, saving jobs, and applying for them:
 
 <img width="1013" alt="Screen Shot 2025-03-04 at 3 16 44 PM" src="https://github.com/user-attachments/assets/dc31fd46-a52e-449f-8af2-ee31baa1e650" />
 
