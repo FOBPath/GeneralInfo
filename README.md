@@ -150,7 +150,7 @@ Hand Skecthed WireFrames:
  ![image](https://github.com/user-attachments/assets/15ecd1c5-2e1f-461f-aae9-a2de7caee988)
 
 
- ###Storyboard
+ ##Storyboard
  
 The following storyboard illustrates the sequence of screens a user would navigate through when using the app. It highlights the user journey from signing up, logging in, searching for jobs, saving jobs, and applying for them.
 
