@@ -122,6 +122,11 @@ From the profile page, the user can navigate to:
 User Job Search Page (to search for jobs)
 User Saved Jobs Page (to check saved jobs)
 
+### Use Case Diagram
+Below is the Use Case Diagram illustrating the main user interactions with the application.
+![image](https://github.com/user-attachments/assets/2591b023-65c6-42ae-b58b-758fad629c4e)
+
+
 ## Wireframes
 
 Hand Skecthed WireFrames: 
