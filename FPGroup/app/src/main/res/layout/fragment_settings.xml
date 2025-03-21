@@ -16,15 +16,19 @@
         android:layout_marginBottom="16dp"/>
 
     <Switch
-        android:id="@+id/darkModeSwitch"
+        android:id="@+id/switchTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enable Dark Mode"
-        android:layout_marginBottom="16dp"/>
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        android:padding="8dp"/>
+
 
     <Button
         android:id="@+id/changePasswordButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Change Password"/>
+
 </LinearLayout>
