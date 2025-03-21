@@ -48,4 +48,14 @@
         android:text="Apply Now"
         android:backgroundTint="@color/design_default_color_primary_dark"
         android:textColor="@android:color/white"/>
+
+    <Button
+        android:id="@+id/saveJobButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Job"
+        android:backgroundTint="@color/purple_500"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="8dp"/>
+
 </LinearLayout>
