@@ -54,5 +54,15 @@
         android:text="Log in"
         android:textColor="@color/linkColor" />
 
+    <Button
+        android:id="@+id/loginRedirectButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Already have an account? Log in"
+        android:backgroundTint="@color/black"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="8dp"/>
+
+
 </LinearLayout>
 
