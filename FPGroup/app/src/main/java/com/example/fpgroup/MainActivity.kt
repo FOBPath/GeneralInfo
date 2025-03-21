@@ -22,11 +22,14 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_home -> HomeFragment()
                 R.id.nav_profile -> ProfileFragment()
                 R.id.nav_settings -> SettingsFragment()
-                R.id.nav_jobs -> JobsFragment()  // Add JobsFragment here
+                R.id.nav_jobs -> JobsFragment()
+                R.id.nav_saved_jobs -> SavedJobsFragment() // New Saved Jobs Tab
                 else -> HomeFragment()
             }
 
-            supportFragmentManager.beginTransaction().replace(R.id.fragment_container, selectedFragment).commit()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, selectedFragment)
+                .commit()
             true
         }
 
