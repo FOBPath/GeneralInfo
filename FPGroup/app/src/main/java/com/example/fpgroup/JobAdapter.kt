@@ -1,6 +1,7 @@
 package com.example.fpgroup
 
 import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,16 +28,17 @@ class JobAdapter(private val jobList: List<Job>) : RecyclerView.Adapter<JobAdapt
         holder.jobLocation.text = job.location
 
         holder.itemView.setOnClickListener {
-            val context = holder.itemView.context
-            val intent = Intent(context, JobDetailsActivity::class.java)
-            intent.putExtra("JOB_TITLE", job.title)
-            intent.putExtra("JOB_COMPANY", job.company)
-            intent.putExtra("JOB_LOCATION", job.location)
-            intent.putExtra("JOB_DESCRIPTION", job.description)
-            intent.putExtra("JOB_URL", job.jobUrl)
-            context.startActivity(intent)
+            val intent = Intent(holder.itemView.context, JobDetailsActivity::class.java).apply {
+                putExtra("JOB_TITLE", job.title)
+                putExtra("JOB_COMPANY", job.company)
+                putExtra("JOB_LOCATION", job.location)
+                putExtra("JOB_DESCRIPTION", job.description)
+                putExtra("JOB_URL", job.redirect_url)
+            }
+            holder.itemView.context.startActivity(intent)
         }
     }
 
     override fun getItemCount() = jobList.size
 }
+
