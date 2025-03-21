@@ -4,9 +4,9 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="12dp"
+    android:layout_margin="8dp"
     android:background="@android:color/white"
-    android:elevation="4dp"
-    android:layout_margin="8dp">
+    android:elevation="2dp">
 
     <TextView
         android:id="@+id/jobTitle"
@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:text="Job Title"
         android:textSize="18sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:paddingBottom="4dp"/>
 
     <TextView
         android:id="@+id/jobCompany"
@@ -22,7 +23,8 @@
         android:layout_height="wrap_content"
         android:text="Company"
         android:textSize="16sp"
-        android:textColor="@android:color/darker_gray"/>
+        android:textColor="@android:color/darker_gray"
+        android:paddingBottom="4dp"/>
 
     <TextView
         android:id="@+id/jobLocation"
@@ -30,13 +32,14 @@
         android:layout_height="wrap_content"
         android:text="Location"
         android:textSize="16sp"
-        android:textColor="@android:color/holo_blue_dark"/>
+        android:textColor="@android:color/holo_blue_dark"
+        android:paddingBottom="8dp"/>
 
-    <TextView
-        android:id="@+id/jobDescription"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/applyButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Job Description"
-        android:textSize="14sp"
-        android:layout_marginTop="8dp"/>
+        android:text="Apply Now"
+        android:backgroundTint="@color/purple_500"
+        android:textColor="@android:color/white"/>
 </LinearLayout>
