@@ -23,14 +23,19 @@ class LoginActivity : AppCompatActivity() {
             val password = passwordEditText.text.toString().trim()
 
             if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show()
-            } else {
-                // Navigate to MainActivity
-                val intent = Intent(this, MainActivity::class.java)
-                intent.putExtra("USER_EMAIL", email)
-                startActivity(intent)
-                finish()
+                Toast.makeText(this, "Please enter your credentials", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
+
+            AuthManager.loginUser(email, password) { success, error ->
+                if (success) {
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish()
+                } else {
+                    Toast.makeText(this, "Error: $error", Toast.LENGTH_SHORT).show()
+                }
+            }
+
         }
 
         signUpText.setOnClickListener {
