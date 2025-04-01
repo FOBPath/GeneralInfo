@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="detailJobTitle" type="id" />
+    <item name="detailJobCompany" type="id" />
+    <item name="detailJobLocation" type="id" />
+    <item name="detailJobDescription" type="id" />
+    <item name="nav_saved_jobs" type="id" />
+    <item name="saveJobButton" type="id" />
+    <item name="switchTheme" type="id" />
+</resources>
