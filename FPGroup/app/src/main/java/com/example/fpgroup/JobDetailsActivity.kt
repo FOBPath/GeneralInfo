@@ -2,7 +2,6 @@ package com.example.fpgroup
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -18,7 +17,7 @@ class JobDetailsActivity : AppCompatActivity() {
         val jobCompany = intent.getStringExtra("JOB_COMPANY")
         val jobLocation = intent.getStringExtra("JOB_LOCATION")
         val jobDescription = intent.getStringExtra("JOB_DESCRIPTION")
-        val jobUrl = intent.getStringExtra("JOB_URL")
+        val jobUrl = intent.getStringExtra("JOB_URL") // still used for Save Job
 
         findViewById<TextView>(R.id.detailJobTitle).text = jobTitle
         findViewById<TextView>(R.id.detailJobCompany).text = jobCompany
@@ -26,13 +25,17 @@ class JobDetailsActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.detailJobDescription).text = jobDescription
 
         val applyButton = findViewById<Button>(R.id.applyButton)
-        val saveButton = findViewById<Button>(R.id.saveJobButton) // New save button
+        val saveButton = findViewById<Button>(R.id.saveJobButton)
 
         applyButton.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(jobUrl))
+            val intent = Intent(this, ApplyJobActivity::class.java).apply {
+                putExtra("JOB_TITLE", jobTitle)
+                putExtra("JOB_COMPANY", jobCompany)
+                putExtra("JOB_DESCRIPTION", jobDescription)
+            }
             startActivity(intent)
-            saveAppliedJob(jobTitle, jobCompany, jobLocation, jobUrl) // Save the job when applying
         }
+
 
         saveButton.setOnClickListener {
             saveAppliedJob(jobTitle, jobCompany, jobLocation, jobUrl)
@@ -57,3 +60,4 @@ class JobDetailsActivity : AppCompatActivity() {
         Toast.makeText(this, "Job saved successfully!", Toast.LENGTH_SHORT).show()
     }
 }
+
