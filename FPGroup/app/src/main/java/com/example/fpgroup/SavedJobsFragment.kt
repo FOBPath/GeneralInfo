@@ -42,9 +42,17 @@ class SavedJobsFragment : Fragment() {
         jobsSet?.forEach { jobData ->
             val parts = jobData.split("|")
             if (parts.size >= 4) {
-                savedJobs.add(Job(parts[0], parts[1], parts[2], "Full-time", parts[3]))
+                val job = Job(
+                    title = parts[0],
+                    company = Company(display_name = parts[1]),
+                    location = Location(display_name = parts[2]),
+                    description = "Full-time", // Placeholder or store this too
+                    redirect_url = parts[3]
+                )
+                savedJobs.add(job)
             }
         }
+
 
         if (savedJobs.isEmpty()) {
             Toast.makeText(requireContext(), "No saved jobs found", Toast.LENGTH_SHORT).show()
