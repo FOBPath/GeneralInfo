@@ -24,14 +24,14 @@ class JobAdapter(private val jobList: List<Job>) : RecyclerView.Adapter<JobAdapt
     override fun onBindViewHolder(holder: JobViewHolder, position: Int) {
         val job = jobList[position]
         holder.jobTitle.text = job.title
-        holder.jobCompany.text = job.company
-        holder.jobLocation.text = job.location
+        holder.jobCompany.text = job.company.display_name
+        holder.jobLocation.text = job.location.display_name
 
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, JobDetailsActivity::class.java).apply {
                 putExtra("JOB_TITLE", job.title)
-                putExtra("JOB_COMPANY", job.company)
-                putExtra("JOB_LOCATION", job.location)
+                putExtra("JOB_COMPANY", job.company.display_name)
+                putExtra("JOB_LOCATION", job.location.display_name)
                 putExtra("JOB_DESCRIPTION", job.description)
                 putExtra("JOB_URL", job.redirect_url)
             }
@@ -39,6 +39,6 @@ class JobAdapter(private val jobList: List<Job>) : RecyclerView.Adapter<JobAdapt
         }
     }
 
+
     override fun getItemCount() = jobList.size
 }
-
