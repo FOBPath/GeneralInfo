@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.fpgroup">
+
     <uses-permission android:name="android.permission.INTERNET" />
-
-
 
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
-        android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+        android:enableOnBackInvokedCallback="true">
 
         <activity android:name=".SplashActivity"
             android:exported="true">
@@ -21,6 +21,10 @@
         <activity android:name=".LoginActivity"/>
         <activity android:name=".SignupActivity"/>
         <activity android:name=".MainActivity"/>
+        <activity android:name=".JobDetailsActivity"/>
+        <activity android:name=".ApplyJobActivity" />
+        <activity android:name=".ApplicationSuccessActivity"/>
+
 
     </application>
 </manifest>
