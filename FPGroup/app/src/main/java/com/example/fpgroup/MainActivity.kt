@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_profile -> ProfileFragment()
                 R.id.nav_settings -> SettingsFragment()
                 R.id.nav_jobs -> JobsFragment()
-                R.id.nav_saved_jobs -> SavedJobsFragment() // New Saved Jobs Tab
+                R.id.nav_saved_jobs -> SavedJobsFragment()
                 else -> HomeFragment()
             }
 
@@ -33,9 +33,9 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-
+        val selectedTab = intent.getIntExtra("SELECTED_TAB", R.id.nav_home)
         if (savedInstanceState == null) {
-            bottomNavigationView.selectedItemId = R.id.nav_home
+            bottomNavigationView.selectedItemId = selectedTab
         }
     }
 }
