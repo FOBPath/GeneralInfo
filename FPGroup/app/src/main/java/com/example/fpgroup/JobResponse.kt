@@ -6,8 +6,16 @@ data class JobResponse(
 
 data class Job(
     val title: String,
-    val company: String,
-    val location: String,
+    val company: Company,
+    val location: Location,
     val description: String,
     val redirect_url: String
+)
+
+data class Company(
+    val display_name: String
+)
+
+data class Location(
+    val display_name: String
 )
