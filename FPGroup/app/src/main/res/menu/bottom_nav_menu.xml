@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_home"
@@ -16,4 +15,8 @@
         android:id="@+id/nav_jobs"
         android:icon="@drawable/ic_jobs"
         android:title="STEM Jobs" />
+    <item
+        android:id="@+id/nav_saved"
+        android:icon="@drawable/ic_bookmark"
+        android:title="Saved" />
 </menu>

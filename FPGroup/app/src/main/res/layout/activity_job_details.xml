@@ -35,10 +35,60 @@
             android:paddingBottom="8dp" />
 
         <TextView
-            android:id="@+id/detailJobDescription"
+            android:id="@+id/detailJobSalary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Job description goes here..."
+            android:text="Salary: Not specified"
+            android:textSize="16sp"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Job Summary:"
+            android:textStyle="bold"
+            android:paddingTop="8dp" />
+
+
+        <TextView
+            android:id="@+id/detailJobSummary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Summary goes here..."
+            android:paddingBottom="12dp" />
+
+        <TextView
+            android:text="Required Skills:"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp" />
+        <TextView
+            android:id="@+id/detailJobSkills"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Skills go here..."
+            android:paddingBottom="12dp" />
+
+        <TextView
+            android:text="Benefits:"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp" />
+        <TextView
+            android:id="@+id/detailJobBenefits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Benefits go here..."
+            android:paddingBottom="16dp" />
+
+        <TextView
+            android:id="@+id/detailJobQualifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Qualifications: N/A"
+            android:textSize="16sp"
             android:paddingBottom="16dp" />
 
         <Button
@@ -46,8 +96,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Apply Now"
-            android:backgroundTint="@color/colorPrimary"
-            android:textColor="@color/white"
+            android:backgroundTint="?attr/colorPrimary"
+            android:textColor="@android:color/white"
             android:layout_marginBottom="8dp" />
 
         <Button
@@ -55,7 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Save Job"
-            android:backgroundTint="@color/colorPrimary"
-            android:textColor="@color/white" />
+            android:backgroundTint="?attr/colorPrimary"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 </ScrollView>

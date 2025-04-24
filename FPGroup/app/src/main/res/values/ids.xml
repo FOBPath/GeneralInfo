@@ -7,4 +7,5 @@
     <item name="nav_saved_jobs" type="id" />
     <item name="saveJobButton" type="id" />
     <item name="switchTheme" type="id" />
+    <item name="actionButton" type="id" />
 </resources>

@@ -1,14 +1,13 @@
 package com.example.fpgroup
 
 import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class JobAdapter(private val jobList: List<Job>) : RecyclerView.Adapter<JobAdapter.JobViewHolder>() {
+class JobAdapter(private val jobList: MutableList<Job>) : RecyclerView.Adapter<JobAdapter.JobViewHolder>() {
 
     class JobViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val jobTitle: TextView = itemView.findViewById(R.id.jobTitle)
@@ -39,6 +38,11 @@ class JobAdapter(private val jobList: List<Job>) : RecyclerView.Adapter<JobAdapt
         }
     }
 
-
     override fun getItemCount() = jobList.size
+
+    fun updateJobs(newJobs: List<Job>) {
+        jobList.clear()
+        jobList.addAll(newJobs)
+        notifyDataSetChanged()
+    }
 }
