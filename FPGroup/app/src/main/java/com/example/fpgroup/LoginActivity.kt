@@ -2,10 +2,7 @@ package com.example.fpgroup
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 
 class LoginActivity : AppCompatActivity() {
@@ -29,18 +26,24 @@ class LoginActivity : AppCompatActivity() {
 
             AuthManager.loginUser(email, password) { success, error ->
                 if (success) {
-                    startActivity(Intent(this, MainActivity::class.java))
-                    finish()
+                    FirestoreHelper.fetchProfile { name, emailFromCloud ->
+                        val prefs = getSharedPreferences("UserData", MODE_PRIVATE)
+                        prefs.edit()
+                            .putString("name", name ?: "Your Name")
+                            .putString("email", emailFromCloud ?: email)
+                            .apply()
+
+                        startActivity(Intent(this, MainActivity::class.java))
+                        finish()
+                    }
                 } else {
                     Toast.makeText(this, "Error: $error", Toast.LENGTH_SHORT).show()
                 }
             }
-
         }
 
         signUpText.setOnClickListener {
-            val intent = Intent(this, SignupActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, SignupActivity::class.java))
         }
     }
 }

@@ -1,5 +1,7 @@
 package com.example.fpgroup
 
+import android.content.Context
+import android.content.Intent
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -8,10 +10,6 @@ import com.google.firebase.auth.UserProfileChangeRequest
 object AuthManager {
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
-    /**
-     * Registers a new user with email and password.
-     * Calls onComplete with success status and optional error message.
-     */
     fun registerUser(email: String, password: String, onComplete: (Boolean, String?) -> Unit) {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
@@ -34,10 +32,6 @@ object AuthManager {
             }
     }
 
-    /**
-     * Logs in an existing user with email and password.
-     * Ensures the email is verified before allowing login.
-     */
     fun loginUser(email: String, password: String, onComplete: (Boolean, String?) -> Unit) {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
@@ -46,7 +40,7 @@ object AuthManager {
                     if (user != null && user.isEmailVerified) {
                         onComplete(true, null)
                     } else {
-                        auth.signOut() // Prevent unverified access
+                        auth.signOut()
                         onComplete(false, "Please verify your email before logging in.")
                     }
                 } else {
@@ -55,26 +49,21 @@ object AuthManager {
             }
     }
 
-    /**
-     * Logs out the current user and clears local profile data.
-     */
     fun logoutUser() {
         auth.signOut()
-        // Clear shared preferences or local storage if needed
     }
 
-    /**
-     * Checks if a user is currently logged in.
-     * @return FirebaseUser? - the current logged-in user, or null if no user is logged in.
-     */
+    fun logout(context: Context) {
+        logoutUser()
+        val intent = Intent(context, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        context.startActivity(intent)
+    }
+
     fun getCurrentUser(): FirebaseUser? {
         return auth.currentUser
     }
 
-    /**
-     * Sends a password reset email to the given email.
-     * Calls onComplete with success status and optional error message.
-     */
     fun sendPasswordReset(email: String, onComplete: (Boolean, String?) -> Unit) {
         auth.sendPasswordResetEmail(email)
             .addOnCompleteListener { task ->
@@ -86,10 +75,6 @@ object AuthManager {
             }
     }
 
-    /**
-     * Updates the user's profile with a new display name.
-     * Calls onComplete with success status and optional error message.
-     */
     fun updateUserProfile(displayName: String, onComplete: (Boolean, String?) -> Unit) {
         val user = auth.currentUser
         if (user != null) {
@@ -110,5 +95,3 @@ object AuthManager {
         }
     }
 }
-
-

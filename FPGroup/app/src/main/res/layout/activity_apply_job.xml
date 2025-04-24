@@ -8,82 +8,61 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/applyJobTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Job Title Placeholder"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_marginBottom="4dp" />
-
-        <TextView
-            android:id="@+id/applyJobDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Job Description Placeholder"
-            android:textSize="14sp"
-            android:textColor="@color/textColorSecondary"
-            android:layout_marginBottom="16dp" />
-
-        <TextView
-            android:text="Apply for this Job"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="16dp" />
 
         <EditText
-            android:id="@+id/nameField"
+            android:id="@+id/inputName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Full Name"
-            android:inputType="textPersonName"
-            android:layout_marginBottom="12dp" />
+            android:hint="Full Name" />
 
         <EditText
-            android:id="@+id/emailField"
+            android:id="@+id/inputEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email Address"
-            android:inputType="textEmailAddress"
-            android:layout_marginBottom="12dp" />
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
 
         <EditText
-            android:id="@+id/coverLetterField"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:hint="Cover Letter"
-            android:inputType="textMultiLine"
-            android:gravity="top|start"
-            android:background="@android:drawable/edit_text"
-            android:layout_marginBottom="12dp" />
-
-        <Button
-            android:id="@+id/uploadResumeButton"
+            android:id="@+id/inputLocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Upload Resume (PDF)"
-            android:backgroundTint="@color/colorPrimary"
-            android:textColor="@android:color/white"
-            android:layout_marginBottom="8dp" />
+            android:hint="Location" />
 
-        <TextView
-            android:id="@+id/resumeStatus"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/inputExperience"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="No resume selected"
-            android:textColor="@color/textColorSecondary"
-            android:layout_marginBottom="16dp" />
+            android:hint="Work Experience" />
+
+        <EditText
+            android:id="@+id/inputEducation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Education" />
+
+        <EditText
+            android:id="@+id/inputVolunteer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Volunteer Information" />
+
+        <EditText
+            android:id="@+id/inputRace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Race" />
+
+        <EditText
+            android:id="@+id/inputGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Gender" />
 
         <Button
             android:id="@+id/submitApplicationButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Submit Application"
-            android:backgroundTint="@color/colorPrimary"
-            android:textColor="@android:color/white" />
+            android:layout_marginTop="16dp" />
     </LinearLayout>
 </ScrollView>

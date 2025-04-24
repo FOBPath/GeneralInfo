@@ -11,18 +11,29 @@ class ApplicationSuccessActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_application_success)
 
-        val jobTitle = intent.getStringExtra("JOB_TITLE")
-        val jobCompany = intent.getStringExtra("JOB_COMPANY")
+        val successText = findViewById<TextView>(R.id.successMessage)
+        val backButton = findViewById<Button>(R.id.returnHomeButton)
 
-        val successMessage = findViewById<TextView>(R.id.successMessage)
-        successMessage.text = "You have successfully applied for $jobTitle at $jobCompany!"
+        // Optional: Show personalized message
+        val name = intent.getStringExtra("name")
+        if (!name.isNullOrEmpty()) {
+            successText.text = "Thanks, $name!\nYour application has been submitted!"
+        }
 
-        val returnHomeButton = findViewById<Button>(R.id.returnHomeButton)
-        returnHomeButton.setOnClickListener {
+        backButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("SELECTED_TAB", R.id.nav_jobs)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            intent.putExtra("SELECTED_TAB", R.id.nav_home)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
+            finish()
         }
     }
 }
+
+
+
+
+
+
+
+

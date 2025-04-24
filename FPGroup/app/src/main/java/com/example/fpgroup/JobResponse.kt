@@ -9,13 +9,10 @@ data class Job(
     val company: Company,
     val location: Location,
     val description: String,
-    val redirect_url: String
+    val redirect_url: String,
+    val salary: String? = null,
+    val qualifications: String? = null
 )
 
-data class Company(
-    val display_name: String
-)
-
-data class Location(
-    val display_name: String
-)
+data class Company(val display_name: String)
+data class Location(val display_name: String)

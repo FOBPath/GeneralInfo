@@ -7,7 +7,7 @@
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
-        android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+        android:theme="@style/Theme.FPGroup"
         android:enableOnBackInvokedCallback="true">
 
         <activity android:name=".SplashActivity"
@@ -24,6 +24,7 @@
         <activity android:name=".JobDetailsActivity"/>
         <activity android:name=".ApplyJobActivity" />
         <activity android:name=".ApplicationSuccessActivity"/>
+        <activity android:name=".ConfirmationActivity"/>
 
 
     </application>

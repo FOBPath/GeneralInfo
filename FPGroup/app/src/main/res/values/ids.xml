@@ -8,4 +8,12 @@
     <item name="saveJobButton" type="id" />
     <item name="switchTheme" type="id" />
     <item name="actionButton" type="id" />
+    <item name="goHomeButton" type="id" />
+    <item name="jobSearchView" type="id" />
+    <item name="jobRecyclerView" type="id" />
+    <item name="nameEdit" type="id" />
+    <item name="emailEdit" type="id" />
+    <item name="saveProfileButton" type="id" />
+    <item name="applicationSummary" type="id" />
+    <item name="applicationsRecyclerView" type="id" />
 </resources>

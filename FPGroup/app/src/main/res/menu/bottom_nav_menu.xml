@@ -16,7 +16,7 @@
         android:icon="@drawable/ic_jobs"
         android:title="STEM Jobs" />
     <item
-        android:id="@+id/nav_saved"
+        android:id="@+id/nav_saved_jobs"
         android:icon="@drawable/ic_bookmark"
         android:title="Saved" />
 </menu>

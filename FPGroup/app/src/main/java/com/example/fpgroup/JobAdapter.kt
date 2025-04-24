@@ -33,6 +33,8 @@ class JobAdapter(private val jobList: MutableList<Job>) : RecyclerView.Adapter<J
                 putExtra("JOB_LOCATION", job.location.display_name)
                 putExtra("JOB_DESCRIPTION", job.description)
                 putExtra("JOB_URL", job.redirect_url)
+                putExtra("JOB_SALARY", job.salary ?: "Not listed")
+                putExtra("JOB_QUALIFICATIONS", job.qualifications ?: "Not specified")
             }
             holder.itemView.context.startActivity(intent)
         }
