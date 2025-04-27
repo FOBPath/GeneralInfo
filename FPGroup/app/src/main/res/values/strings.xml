@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">FPGroup</string>
     <string name="forgot_password">Forgot Password</string>
+    <string name="software_development">Software Development</string>
+    <string name="cyber">Cyber</string>
+    <string name="engineer">Engineer</string>
+    <string name="it">IT</string>
 </resources>

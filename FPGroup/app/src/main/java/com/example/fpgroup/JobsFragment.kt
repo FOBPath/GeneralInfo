@@ -1,15 +1,14 @@
 package com.example.fpgroup
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.animation.AnimationUtils
+import android.util.Log
+import android.view.*
+import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
@@ -18,88 +17,114 @@ import kotlinx.coroutines.launch
 
 class JobsFragment : Fragment() {
 
-    private lateinit var jobRecyclerView: RecyclerView
     private lateinit var jobAdapter: JobAdapter
-    private var jobList: MutableList<Job> = mutableListOf()
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var chipGroup: ChipGroup
+    private lateinit var searchView: SearchView
+    private lateinit var loadingSpinner: ProgressBar
+    private lateinit var noJobsText: TextView
+    private var allJobs: MutableList<Job> = mutableListOf()
 
-    private val selectedTags = mutableSetOf<String>()
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.fragment_jobs, container, false)
-    }
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View = inflater.inflate(R.layout.fragment_jobs, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        jobRecyclerView = view.findViewById(R.id.jobRecyclerView)
-        jobRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        jobAdapter = JobAdapter(jobList)
-        jobRecyclerView.adapter = jobAdapter
+        recyclerView = view.findViewById(R.id.jobsRecyclerView)
+        chipGroup = view.findViewById(R.id.chipGroupFilters)
+        searchView = view.findViewById(R.id.jobSearchView)
+        loadingSpinner = view.findViewById(R.id.loadingSpinner)
+        noJobsText = view.findViewById(R.id.noJobsText)
 
-        // Animate new jobs with fade-in
-        jobRecyclerView.itemAnimator = DefaultItemAnimator().apply {
-            addDuration = 500
-        }
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        jobAdapter = JobAdapter(mutableListOf())
+        recyclerView.adapter = jobAdapter
 
-        val chipGroup = view.findViewById<ChipGroup>(R.id.tagChipGroup)
-        for (i in 0 until chipGroup.childCount) {
-            val chip = chipGroup.getChildAt(i) as Chip
-            chip.setOnCheckedChangeListener { buttonView, isChecked ->
-                val tagText = buttonView.text.toString()
-                if (isChecked) selectedTags.add(tagText) else selectedTags.remove(tagText)
-                fetchJobs(selectedTags)
-            }
-        }
+        fetchJobs()
 
-        // Initial fetch (empty = fallback to CS jobs)
-        fetchJobs(setOf("Computer Science"))
-
-        val searchView = view.findViewById<SearchView>(R.id.jobSearchView)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                filterJobs(query)
-                return true
-            }
-
+            override fun onQueryTextSubmit(query: String?) = true
             override fun onQueryTextChange(newText: String?): Boolean {
                 filterJobs(newText)
                 return true
             }
         })
+
+        chipGroup.setOnCheckedStateChangeListener { _, _ ->
+            filterJobs(searchView.query.toString())
+        }
     }
 
-    private fun fetchJobs(tags: Set<String>) {
+    private fun fetchJobs() {
+        loadingSpinner.visibility = View.VISIBLE
+        recyclerView.visibility = View.GONE
+        noJobsText.visibility = View.GONE
+
         lifecycleScope.launch {
             try {
-                val queries = if (tags.isEmpty()) listOf("Computer Science") else tags.toList()
-                val combinedJobs = mutableListOf<Job>()
-                for (query in queries) {
-                    val response = AdzunaApi.service.getJobs(
-                        appId = "92d3a253",
-                        apiKey = "fe907628eb40d34e35a55b83f237f9f5",
-                        query = query
-                    )
-                    combinedJobs.addAll(response.results)
+                val response = AdzunaApi.service.getJobs(
+                    appId = "92d3a253",
+                    apiKey = "fe907628eb40d34e35a55b83f237f9f5",
+                    query = "Computer Science OR Software Engineer OR Developer OR IT OR Cybersecurity"
+                )
+                allJobs = response.results.toMutableList()
+                jobAdapter.updateJobs(allJobs)
+
+                loadingSpinner.visibility = View.GONE
+                recyclerView.visibility = View.VISIBLE
+
+                if (allJobs.isEmpty()) {
+                    noJobsText.visibility = View.VISIBLE
+                    recyclerView.visibility = View.GONE
                 }
 
-                jobList.clear()
-                jobList.addAll(combinedJobs)
-                jobAdapter.updateJobs(combinedJobs)
-
-                // Optional animation
-                jobRecyclerView.startAnimation(AnimationUtils.loadAnimation(context, android.R.anim.fade_in))
-
+                Log.d("JobsFragment", "Fetched ${allJobs.size} jobs")
             } catch (e: Exception) {
                 e.printStackTrace()
-                Toast.makeText(requireContext(), "Failed to load jobs", Toast.LENGTH_SHORT).show()
+                loadingSpinner.visibility = View.GONE
+                noJobsText.visibility = View.VISIBLE
+                Toast.makeText(requireContext(), "Error: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
             }
         }
     }
 
     private fun filterJobs(query: String?) {
-        val filtered = if (!query.isNullOrEmpty()) {
-            jobList.filter { it.title.contains(query, ignoreCase = true) }
-        } else jobList
+        val selectedTags = chipGroup.checkedChipIds
+            .mapNotNull { id -> view?.findViewById<Chip>(id)?.text?.toString()?.lowercase() }
+            ?: emptyList()
+
+        val filtered = allJobs.filter { job ->
+            val matchesQuery = query.isNullOrBlank() ||
+                    job.title.contains(query, true) ||
+                    job.company.display_name.contains(query, true) ||
+                    job.description.contains(query, true)
+
+            val matchesTags = selectedTags.isEmpty() || selectedTags.any { tag ->
+                when (tag) {
+                    "cyber" -> job.title.contains("cyber", true) || job.description.contains("cyber", true)
+                    "software development" -> job.title.contains("software", true) || job.description.contains("developer", true)
+                    "engineer" -> job.title.contains("engineer", true) || job.description.contains("engineer", true)
+                    "it" -> job.title.contains("it", true) || job.description.contains("information technology", true)
+                    else -> false
+                }
+            }
+
+            matchesQuery && matchesTags
+        }
+
         jobAdapter.updateJobs(filtered)
+
+        if (filtered.isEmpty()) {
+            noJobsText.visibility = View.VISIBLE
+            recyclerView.visibility = View.GONE
+        } else {
+            noJobsText.visibility = View.GONE
+            recyclerView.visibility = View.VISIBLE
+        }
+
+        Log.d("JobsFragment", "Filtered to ${filtered.size} jobs with query=$query and tags=$selectedTags")
     }
 }

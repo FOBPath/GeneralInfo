@@ -4,6 +4,11 @@
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
-        <item name="android:windowBackground">@color/white</item>
+
+        <item name="android:windowBackground">@color/white</item> <!-- LIGHT background -->
+
+        <!-- Text colors (optional if you want better looks) -->
+        <item name="android:textColorPrimary">@android:color/black</item>
+        <item name="android:textColorSecondary">@android:color/darker_gray</item>
     </style>
 </resources>

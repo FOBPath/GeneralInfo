@@ -16,4 +16,9 @@
     <item name="saveProfileButton" type="id" />
     <item name="applicationSummary" type="id" />
     <item name="applicationsRecyclerView" type="id" />
+    <item name="chipGroup" type="id" />
+    <item name="jobsRecyclerView" type="id" />
+    <item name="noJobsText" type="id" />
+    <item name="loadingSpinner" type="id" />
+    <item name="chipGroupFilters" type="id" />
 </resources>

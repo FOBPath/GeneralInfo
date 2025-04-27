@@ -8,8 +8,7 @@ interface JobApiService {
     suspend fun getJobs(
         @Query("app_id") appId: String,
         @Query("app_key") apiKey: String,
-        @Query("results_per_page") resultsPerPage: Int = 10,
-        @Query("what") query: String,
-        @Query("content-type") contentType: String = "application/json"
+        @Query("results_per_page") resultsPerPage: Int = 20,
+        @Query("what") query: String
     ): JobResponse
 }
