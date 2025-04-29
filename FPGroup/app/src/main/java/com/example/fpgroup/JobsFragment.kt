@@ -65,12 +65,20 @@ class JobsFragment : Fragment() {
 
         lifecycleScope.launch {
             try {
-                val response = AdzunaApi.service.getJobs(
-                    appId = "92d3a253",
-                    apiKey = "fe907628eb40d34e35a55b83f237f9f5",
-                    query = "Computer Science OR Software Engineer OR Developer OR IT OR Cybersecurity"
-                )
-                allJobs = response.results.toMutableList()
+                val keywords = listOf("Cybersecurity", "Software Developer", "IT", "Computer Science", "Engineering")
+
+                val jobResults = mutableListOf<Job>()
+
+                for (keyword in keywords) {
+                    val response = AdzunaApi.service.getJobs(
+                        appId = "92d3a253",
+                        apiKey = "fe907628eb40d34e35a55b83f237f9f5",
+                        query = keyword
+                    )
+                    jobResults.addAll(response.results)
+                }
+
+                allJobs = jobResults.distinctBy { it.title }.toMutableList() // remove duplicates
                 jobAdapter.updateJobs(allJobs)
 
                 loadingSpinner.visibility = View.GONE
@@ -81,7 +89,7 @@ class JobsFragment : Fragment() {
                     recyclerView.visibility = View.GONE
                 }
 
-                Log.d("JobsFragment", "Fetched ${allJobs.size} jobs")
+                Log.d("JobsFragment", "Fetched ${allJobs.size} jobs from multiple keywords")
             } catch (e: Exception) {
                 e.printStackTrace()
                 loadingSpinner.visibility = View.GONE
@@ -90,7 +98,6 @@ class JobsFragment : Fragment() {
             }
         }
     }
-
     private fun filterJobs(query: String?) {
         val selectedTags = chipGroup.checkedChipIds
             .mapNotNull { id -> view?.findViewById<Chip>(id)?.text?.toString()?.lowercase() }

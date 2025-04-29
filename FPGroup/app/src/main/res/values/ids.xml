@@ -21,4 +21,13 @@
     <item name="noJobsText" type="id" />
     <item name="loadingSpinner" type="id" />
     <item name="chipGroupFilters" type="id" />
+    <item name="jobCompanyText" type="id" />
+    <item name="jobTitleText" type="id" />
+    <item name="jobLocationText" type="id" />
+    <item name="salaryText" type="id" />
+    <item name="descriptionText" type="id" />
+    <item name="skillsText" type="id" />
+    <item name="benefitsText" type="id" />
+    <item name="qualificationsText" type="id" />
+    <item name="saveButton" type="id" />
 </resources>

@@ -5,107 +5,88 @@
     android:padding="16dp">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/detailJobTitle"
-            android:layout_width="wrap_content"
+            android:id="@+id/jobTitleText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Job Title"
-            android:textStyle="bold"
             android:textSize="20sp"
-            android:paddingBottom="8dp" />
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
 
         <TextView
-            android:id="@+id/detailJobCompany"
-            android:layout_width="wrap_content"
+            android:id="@+id/jobCompanyText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Company Name"
+            android:text="Company"
             android:textSize="16sp"
-            android:paddingBottom="4dp" />
+            android:layout_marginBottom="4dp" />
 
         <TextView
-            android:id="@+id/detailJobLocation"
-            android:layout_width="wrap_content"
+            android:id="@+id/jobLocationText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Location"
-            android:textSize="16sp"
-            android:paddingBottom="8dp" />
+            android:textSize="14sp"
+            android:layout_marginBottom="8dp" />
 
         <TextView
-            android:id="@+id/detailJobSalary"
-            android:layout_width="wrap_content"
+            android:id="@+id/salaryText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Salary: Not specified"
-            android:textSize="16sp"
-            android:paddingBottom="8dp" />
+            android:text="Salary"
+            android:textSize="14sp"
+            android:layout_marginBottom="12dp" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/descriptionText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Job Summary:"
-            android:textStyle="bold"
-            android:paddingTop="8dp" />
-
+            android:textSize="14sp"
+            android:layout_marginBottom="12dp" />
 
         <TextView
-            android:id="@+id/detailJobSummary"
-            android:layout_width="wrap_content"
+            android:id="@+id/skillsText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Summary goes here..."
-            android:paddingBottom="12dp" />
-
-        <TextView
             android:text="Required Skills:"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="8dp" />
-        <TextView
-            android:id="@+id/detailJobSkills"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Skills go here..."
-            android:paddingBottom="12dp" />
+            android:textSize="14sp"
+            android:layout_marginBottom="12dp" />
 
         <TextView
+            android:id="@+id/benefitsText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Benefits:"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="8dp" />
-        <TextView
-            android:id="@+id/detailJobBenefits"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Benefits go here..."
-            android:paddingBottom="16dp" />
+            android:textSize="14sp"
+            android:layout_marginBottom="12dp" />
 
         <TextView
-            android:id="@+id/detailJobQualifications"
-            android:layout_width="wrap_content"
+            android:id="@+id/qualificationsText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Qualifications: N/A"
-            android:textSize="16sp"
-            android:paddingBottom="16dp" />
+            android:text="Qualifications:"
+            android:textSize="14sp"
+            android:layout_marginBottom="12dp" />
 
         <Button
             android:id="@+id/applyButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Apply Now"
-            android:backgroundTint="?attr/colorPrimary"
-            android:textColor="@android:color/white"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginTop="24dp" />
 
         <Button
-            android:id="@+id/saveJobButton"
+            android:id="@+id/saveButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Save Job"
-            android:backgroundTint="?attr/colorPrimary"
-            android:textColor="@android:color/white" />
+            android:layout_marginTop="12dp" />
+
     </LinearLayout>
 </ScrollView>
