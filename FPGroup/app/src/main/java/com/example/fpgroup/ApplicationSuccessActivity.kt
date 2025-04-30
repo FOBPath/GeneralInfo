@@ -30,10 +30,3 @@ class ApplicationSuccessActivity : AppCompatActivity() {
     }
 }
 
-
-
-
-
-
-
-

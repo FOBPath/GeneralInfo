@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 
 class ApplyJobActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +24,7 @@ class ApplyJobActivity : AppCompatActivity() {
         val genderInput: EditText = findViewById(R.id.inputGender)
         val submitBtn: Button = findViewById(R.id.submitApplicationButton)
 
+        // Auto-fill from SharedPreferences
         nameInput.setText(prefs.getString("name", ""))
         emailInput.setText(prefs.getString("email", ""))
 
@@ -45,6 +47,7 @@ class ApplyJobActivity : AppCompatActivity() {
 
             FirestoreHelper.submitApplication(application) { success ->
                 if (success) {
+                    FirestoreHelper.sendEmailConfirmation(application["email"]!!, application["jobTitle"]!!)
                     val intent = Intent(this, ApplicationSuccessActivity::class.java)
                     intent.putExtra("name", application["name"])
                     startActivity(intent)

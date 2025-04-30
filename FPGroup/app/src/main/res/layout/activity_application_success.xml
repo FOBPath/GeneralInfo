@@ -15,14 +15,16 @@
         android:textSize="22sp"
         android:textStyle="bold"
         android:textColor="@color/colorPrimary"
+        android:textAlignment="center"
         android:gravity="center"
         android:layout_marginBottom="24dp" />
 
     <Button
         android:id="@+id/returnHomeButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Back to Home"
         android:backgroundTint="@color/colorPrimary"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:layout_marginTop="16dp"/>
 </LinearLayout>

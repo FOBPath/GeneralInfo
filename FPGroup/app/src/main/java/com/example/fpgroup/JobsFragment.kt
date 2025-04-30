@@ -3,10 +3,9 @@ package com.example.fpgroup
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.ProgressBar
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,14 +24,11 @@ class JobsFragment : Fragment() {
     private lateinit var noJobsText: TextView
     private var allJobs: MutableList<Job> = mutableListOf()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View = inflater.inflate(R.layout.fragment_jobs, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        return inflater.inflate(R.layout.fragment_jobs, container, false)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         recyclerView = view.findViewById(R.id.jobsRecyclerView)
         chipGroup = view.findViewById(R.id.chipGroupFilters)
         searchView = view.findViewById(R.id.jobSearchView)
@@ -42,6 +38,8 @@ class JobsFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         jobAdapter = JobAdapter(mutableListOf())
         recyclerView.adapter = jobAdapter
+
+        addFilterChips()
 
         fetchJobs()
 
@@ -58,6 +56,19 @@ class JobsFragment : Fragment() {
         }
     }
 
+    private fun addFilterChips() {
+        val tags = listOf("Cyber", "Software Development", "Engineer", "IT", "Internship", "Remote")
+        chipGroup.removeAllViews()
+        for (tag in tags) {
+            val chip = Chip(requireContext()).apply {
+                text = tag
+                isCheckable = true
+                setChipBackgroundColor(ContextCompat.getColorStateList(requireContext(), R.color.chip_default))
+            }
+            chipGroup.addView(chip)
+        }
+    }
+
     private fun fetchJobs() {
         loadingSpinner.visibility = View.VISIBLE
         recyclerView.visibility = View.GONE
@@ -66,7 +77,6 @@ class JobsFragment : Fragment() {
         lifecycleScope.launch {
             try {
                 val keywords = listOf("Cybersecurity", "Software Developer", "IT", "Computer Science", "Engineering")
-
                 val jobResults = mutableListOf<Job>()
 
                 for (keyword in keywords) {
@@ -78,60 +88,38 @@ class JobsFragment : Fragment() {
                     jobResults.addAll(response.results)
                 }
 
-                allJobs = jobResults.distinctBy { it.title }.toMutableList() // remove duplicates
+                allJobs = jobResults.distinctBy { it.title }.toMutableList()
                 jobAdapter.updateJobs(allJobs)
-
                 loadingSpinner.visibility = View.GONE
                 recyclerView.visibility = View.VISIBLE
 
                 if (allJobs.isEmpty()) {
                     noJobsText.visibility = View.VISIBLE
-                    recyclerView.visibility = View.GONE
                 }
-
-                Log.d("JobsFragment", "Fetched ${allJobs.size} jobs from multiple keywords")
             } catch (e: Exception) {
                 e.printStackTrace()
                 loadingSpinner.visibility = View.GONE
                 noJobsText.visibility = View.VISIBLE
-                Toast.makeText(requireContext(), "Error: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
             }
         }
     }
+
     private fun filterJobs(query: String?) {
-        val selectedTags = chipGroup.checkedChipIds
-            .mapNotNull { id -> view?.findViewById<Chip>(id)?.text?.toString()?.lowercase() }
-            ?: emptyList()
+        val selectedTags = chipGroup.checkedChipIds.mapNotNull {
+            view?.findViewById<Chip>(it)?.text?.toString()?.lowercase()
+        }
 
         val filtered = allJobs.filter { job ->
-            val matchesQuery = query.isNullOrBlank() ||
-                    job.title.contains(query, true) ||
-                    job.company.display_name.contains(query, true) ||
-                    job.description.contains(query, true)
-
+            val matchesQuery = query.isNullOrBlank() || job.title.contains(query, true)
             val matchesTags = selectedTags.isEmpty() || selectedTags.any { tag ->
-                when (tag) {
-                    "cyber" -> job.title.contains("cyber", true) || job.description.contains("cyber", true)
-                    "software development" -> job.title.contains("software", true) || job.description.contains("developer", true)
-                    "engineer" -> job.title.contains("engineer", true) || job.description.contains("engineer", true)
-                    "it" -> job.title.contains("it", true) || job.description.contains("information technology", true)
-                    else -> false
-                }
+                job.title.contains(tag, true) || job.description.contains(tag, true)
             }
-
             matchesQuery && matchesTags
         }
 
         jobAdapter.updateJobs(filtered)
 
-        if (filtered.isEmpty()) {
-            noJobsText.visibility = View.VISIBLE
-            recyclerView.visibility = View.GONE
-        } else {
-            noJobsText.visibility = View.GONE
-            recyclerView.visibility = View.VISIBLE
-        }
-
-        Log.d("JobsFragment", "Filtered to ${filtered.size} jobs with query=$query and tags=$selectedTags")
+        recyclerView.visibility = if (filtered.isEmpty()) View.GONE else View.VISIBLE
+        noJobsText.visibility = if (filtered.isEmpty()) View.VISIBLE else View.GONE
     }
 }

@@ -30,4 +30,13 @@
     <item name="benefitsText" type="id" />
     <item name="qualificationsText" type="id" />
     <item name="saveButton" type="id" />
+    <item name="expandButton" type="id" />
+    <item name="backButton" type="id" />
+    <item name="detailJobSalary" type="id" />
+    <item name="applyNowButton" type="id" />
+    <item name="expandToggle" type="id" />
+    <item name="inputAddress" type="id" />
+    <item name="exportButton" type="id" />
+    <item name="selectResumeButton" type="id" />
+    <item name="submitResumeButton" type="id" />
 </resources>

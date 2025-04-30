@@ -21,3 +21,9 @@ class AppliedJobsManager(context: Context) {
         return gson.fromJson(json, type)
     }
 }
+
+
+
+
+
+

@@ -2,21 +2,24 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/colorBackground">
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
+        <!-- Header -->
         <TextView
             android:id="@+id/jobTitleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Job Title"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:textStyle="bold"
-            android:layout_marginBottom="8dp" />
+            android:textColor="@color/textColorPrimary"
+            android:layout_marginBottom="6dp" />
 
         <TextView
             android:id="@+id/jobCompanyText"
@@ -24,69 +27,81 @@
             android:layout_height="wrap_content"
             android:text="Company"
             android:textSize="16sp"
-            android:layout_marginBottom="4dp" />
+            android:textColor="@color/textColorSecondary" />
 
         <TextView
             android:id="@+id/jobLocationText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Location"
-            android:textSize="14sp"
-            android:layout_marginBottom="8dp" />
+            android:textSize="16sp"
+            android:textColor="@color/textColorSecondary"
+            android:layout_marginBottom="12dp" />
 
+        <!-- Salary -->
         <TextView
             android:id="@+id/salaryText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Salary"
-            android:textSize="14sp"
-            android:layout_marginBottom="12dp" />
+            android:text="Salary: Not listed"
+            android:textStyle="italic"
+            android:textSize="15sp"
+            android:textColor="@color/textColorSecondary"
+            android:layout_marginBottom="16dp" />
 
+        <!-- Description -->
         <TextView
             android:id="@+id/descriptionText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Job Summary:"
-            android:textSize="14sp"
-            android:layout_marginBottom="12dp" />
+            android:text="Job description goes here..."
+            android:textColor="@color/textColorPrimary"
+            android:maxLines="5"
+            android:ellipsize="end"
+            android:layout_marginBottom="4dp" />
 
-        <TextView
-            android:id="@+id/skillsText"
-            android:layout_width="match_parent"
+        <!-- Expand/Collapse -->
+        <Button
+            android:id="@+id/expandButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Required Skills:"
-            android:textSize="14sp"
-            android:layout_marginBottom="12dp" />
+            android:text="Read More ▼"
+            android:textColor="@color/linkColor"
+            android:background="@android:color/transparent"
+            android:padding="0dp"
+            android:minHeight="0dp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp" />
 
-        <TextView
-            android:id="@+id/benefitsText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Benefits:"
-            android:textSize="14sp"
-            android:layout_marginBottom="12dp" />
-
+        <!-- Qualifications -->
         <TextView
             android:id="@+id/qualificationsText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Qualifications:"
-            android:textSize="14sp"
-            android:layout_marginBottom="12dp" />
+            android:textColor="@color/textColorPrimary"
+            android:layout_marginBottom="24dp" />
 
+        <!-- Buttons -->
         <Button
             android:id="@+id/applyButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Apply Now"
-            android:layout_marginTop="24dp" />
+            android:text="Apply In-App"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/button_default"
+            android:layout_marginBottom="12dp"
+            android:elevation="2dp" />
 
         <Button
             android:id="@+id/saveButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Save Job"
-            android:layout_marginTop="12dp" />
-
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/button_focused"
+            android:elevation="2dp" />
     </LinearLayout>
 </ScrollView>

@@ -8,6 +8,15 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:weightSum="1">
+    <TextView
+        android:id="@+id/jobsHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Explore STEM Opportunities"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center" />
 
     <!-- Search Bar -->
     <androidx.appcompat.widget.SearchView
