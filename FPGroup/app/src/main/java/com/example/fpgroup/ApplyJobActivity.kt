@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class ApplyJobActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_apply_job)
@@ -28,6 +29,13 @@ class ApplyJobActivity : AppCompatActivity() {
         nameInput.setText(prefs.getString("name", ""))
         emailInput.setText(prefs.getString("email", ""))
 
+        val jobTitle = intent.getStringExtra("JOB_TITLE") ?: "Unknown"
+        val jobCompany = intent.getStringExtra("JOB_COMPANY") ?: "Unknown"
+        val jobLocation = intent.getStringExtra("JOB_LOCATION") ?: ""
+        val jobSalary = intent.getStringExtra("JOB_SALARY") ?: "Not listed"
+        val jobQualifications = intent.getStringExtra("JOB_QUALIFICATIONS") ?: "Not specified"
+        val jobUrl = intent.getStringExtra("JOB_URL") ?: ""
+
         submitBtn.setOnClickListener {
             val application = mapOf(
                 "name" to nameInput.text.toString(),
@@ -38,16 +46,23 @@ class ApplyJobActivity : AppCompatActivity() {
                 "volunteer" to volunteerInput.text.toString(),
                 "race" to raceInput.text.toString(),
                 "gender" to genderInput.text.toString(),
-                "jobTitle" to (intent.getStringExtra("JOB_TITLE") ?: "Unknown"),
-                "jobCompany" to (intent.getStringExtra("JOB_COMPANY") ?: "Unknown"),
-                "jobLocation" to (intent.getStringExtra("JOB_LOCATION") ?: ""),
-                "jobSalary" to (intent.getStringExtra("JOB_SALARY") ?: "Not listed"),
-                "jobQualifications" to (intent.getStringExtra("JOB_QUALIFICATIONS") ?: "Not specified")
+                "jobTitle" to jobTitle,
+                "jobCompany" to jobCompany,
+                "jobLocation" to jobLocation,
+                "jobSalary" to jobSalary,
+                "jobQualifications" to jobQualifications,
+                "jobUrl" to jobUrl
             )
 
             FirestoreHelper.submitApplication(application) { success ->
                 if (success) {
-                    FirestoreHelper.sendEmailConfirmation(application["email"]!!, application["jobTitle"]!!)
+                    FirestoreHelper.sendEmailConfirmation(
+                        this@ApplyJobActivity,
+                        application["email"]!!,
+                        jobTitle,
+                        jobUrl
+                    )
+
                     val intent = Intent(this, ApplicationSuccessActivity::class.java)
                     intent.putExtra("name", application["name"])
                     startActivity(intent)

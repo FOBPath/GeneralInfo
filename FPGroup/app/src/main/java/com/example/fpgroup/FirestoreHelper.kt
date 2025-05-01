@@ -1,5 +1,6 @@
 package com.example.fpgroup
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
@@ -16,7 +17,8 @@ object FirestoreHelper {
 
         val data = application + mapOf(
             "userId" to userId,
-            "timestamp" to System.currentTimeMillis().toString()
+            "timestamp" to System.currentTimeMillis().toString(),
+            "status" to "Submitted"
         )
 
         docRef.set(data)
@@ -124,15 +126,26 @@ object FirestoreHelper {
     }
 
     // Send confirmation email after application
-    fun sendEmailConfirmation(email: String, jobTitle: String) {
+    fun sendEmailConfirmation(context: Context, email: String, jobTitle: String, jobUrl: String?) {
         try {
             val intent = Intent(Intent.ACTION_SENDTO).apply {
                 data = Uri.parse("mailto:$email")
                 putExtra(Intent.EXTRA_SUBJECT, "FObPath Application Confirmation")
-                putExtra(Intent.EXTRA_TEXT, "Thank you for applying for the position: $jobTitle.\n\nWe wish you success and will keep you updated.")
+                putExtra(
+                    Intent.EXTRA_TEXT,
+                    """
+                    Thank you for applying for the position: $jobTitle.
+
+                    You can view the job posting here: ${jobUrl ?: "N/A"}
+
+                    We wish you success and will keep you updated.
+
+                    – FObPath Team
+                    """.trimIndent()
+                )
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK
             }
-            MyApplication.instance?.startActivity(intent)
+            context.startActivity(intent)
         } catch (e: Exception) {
             Log.e("FirestoreHelper", "Failed to send confirmation email", e)
         }
