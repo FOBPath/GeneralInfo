@@ -5,4 +5,11 @@
     <string name="cyber">Cyber</string>
     <string name="engineer">Engineer</string>
     <string name="it">IT</string>
+    <string-array name="education_levels">
+        <item>High School</item>
+        <item>Associate\'s Degree</item>
+        <item>Bachelor\'s Degree</item>
+        <item>Master\'s Degree</item>
+        <item>Ph.D.</item>
+    </string-array>
 </resources>

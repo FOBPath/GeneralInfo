@@ -39,4 +39,18 @@
     <item name="exportButton" type="id" />
     <item name="selectResumeButton" type="id" />
     <item name="submitResumeButton" type="id" />
+    <item name="nameEditText" type="id" />
+    <item name="phoneEditText" type="id" />
+    <item name="addressEditText" type="id" />
+    <item name="educationSpinner" type="id" />
+    <item name="experienceEditText" type="id" />
+    <item name="coverLetterEditText" type="id" />
+    <item name="linkedinEditText" type="id" />
+    <item name="portfolioEditText" type="id" />
+    <item name="statusContainer" type="id" />
+    <item name="salarySlider" type="id" />
+    <item name="locationEditText" type="id" />
+    <item name="clearFiltersButton" type="id" />
+    <item name="submittedApplicationsContainer" type="id" />
+    <item name="withdrawButton" type="id" />
 </resources>

@@ -36,6 +36,32 @@
             android:layout_height="wrap_content"
             android:hint="Your Email"
             android:inputType="textEmailAddress"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Skills -->
+        <EditText
+            android:id="@+id/skillsEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Skills (comma-separated)"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Experience -->
+        <EditText
+            android:id="@+id/experienceEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Work Experience"
+            android:minLines="3"
+            android:inputType="textMultiLine"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Contact Info -->
+        <EditText
+            android:id="@+id/contactEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contact Info (Phone or Alt. Email)"
             android:layout_marginBottom="16dp" />
 
         <!-- Resume Status -->

@@ -2,7 +2,6 @@ package com.example.fpgroup
 
 import android.animation.ValueAnimator
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import android.view.animation.AccelerateDecelerateInterpolator
@@ -19,6 +18,10 @@ class JobDetailsActivity : AppCompatActivity() {
     private lateinit var saveButton: Button
     private lateinit var expandButton: Button
     private lateinit var descriptionText: TextView
+    private lateinit var qualificationsText: TextView
+    private lateinit var skillsText: TextView
+    private lateinit var benefitsText: TextView
+
     private var isExpanded = false
     private var fullDescription: String? = null
     private var jobUrl: String? = null
@@ -27,24 +30,26 @@ class JobDetailsActivity : AppCompatActivity() {
     private lateinit var jobLocation: String
     private var jobSalary: String? = null
     private var jobQualifications: String? = null
+    private var jobSkills: String? = null
+    private var jobBenefits: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_job_details)
 
-        // Views
         val titleText: TextView = findViewById(R.id.jobTitleText)
         val companyText: TextView = findViewById(R.id.jobCompanyText)
         val locationText: TextView = findViewById(R.id.jobLocationText)
         val salaryText: TextView = findViewById(R.id.salaryText)
         descriptionText = findViewById(R.id.descriptionText)
-        val qualificationsText: TextView = findViewById(R.id.qualificationsText)
+        qualificationsText = findViewById(R.id.qualificationsText)
+        skillsText = findViewById(R.id.skillsText)
+        benefitsText = findViewById(R.id.benefitsText)
 
         applyButton = findViewById(R.id.applyButton)
         saveButton = findViewById(R.id.saveButton)
         expandButton = findViewById(R.id.expandButton)
 
-        // Fetch intent extras
         jobTitle = intent.getStringExtra("JOB_TITLE") ?: "No Title"
         jobCompany = intent.getStringExtra("JOB_COMPANY") ?: "No Company"
         jobLocation = intent.getStringExtra("JOB_LOCATION") ?: "No Location"
@@ -52,14 +57,14 @@ class JobDetailsActivity : AppCompatActivity() {
         fullDescription = intent.getStringExtra("JOB_DESCRIPTION")
         jobUrl = intent.getStringExtra("JOB_URL")
         jobQualifications = intent.getStringExtra("JOB_QUALIFICATIONS")
+        jobSkills = intent.getStringExtra("JOB_SKILLS")
+        jobBenefits = intent.getStringExtra("JOB_BENEFITS")
 
-        // Set text views
         titleText.text = jobTitle
         companyText.text = jobCompany
         locationText.text = jobLocation
         salaryText.text = "Salary: $jobSalary"
 
-        // Description logic
         if (!fullDescription.isNullOrBlank()) {
             if (fullDescription!!.length > 200) {
                 descriptionText.text = fullDescription!!.take(200) + "..."
@@ -73,14 +78,15 @@ class JobDetailsActivity : AppCompatActivity() {
             expandButton.visibility = View.GONE
         }
 
-        // Qualifications
         if (!jobQualifications.isNullOrBlank() && jobQualifications != "Not specified") {
             qualificationsText.text = "Qualifications:\n$jobQualifications"
         } else {
             qualificationsText.visibility = View.GONE
         }
 
-        // Click Listeners
+        skillsText.text = "Skills:\n${jobSkills ?: "Not listed"}"
+        benefitsText.text = "Benefits:\n${jobBenefits ?: "Not listed"}"
+
         expandButton.setOnClickListener { toggleDescription() }
 
         saveButton.setOnClickListener {
@@ -95,47 +101,43 @@ class JobDetailsActivity : AppCompatActivity() {
                 redirect_url = jobUrl ?: ""
             )
             FirestoreHelper.saveJobToFirestore(job, userId) { success ->
-                Toast.makeText(this, if (success) "Job saved to cloud!" else "Failed to save job", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, if (success) "Job saved!" else "Failed to save", Toast.LENGTH_SHORT).show()
             }
         }
 
         applyButton.setOnClickListener {
             val intent = Intent(this, JobApplicationFormActivity::class.java).apply {
                 putExtra("JOB_TITLE", jobTitle)
+                putExtra("JOB_COMPANY", jobCompany)
+                putExtra("JOB_LOCATION", jobLocation)
+                putExtra("JOB_SALARY", jobSalary)
+                putExtra("JOB_QUALIFICATIONS", jobQualifications)
                 putExtra("JOB_URL", jobUrl)
             }
             startActivity(intent)
         }
 
-        // Enable back arrow in action bar
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun toggleDescription() {
         isExpanded = !isExpanded
-
         val initialHeight = descriptionText.height
         val targetText = if (isExpanded) fullDescription else fullDescription!!.take(200) + "..."
         val targetLines = if (isExpanded) Int.MAX_VALUE else 5
 
-        // Temporarily update text to measure
         descriptionText.text = targetText
         descriptionText.maxLines = targetLines
-        descriptionText.measure(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
+        descriptionText.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         val targetHeight = descriptionText.measuredHeight
 
-        // Reset before animating
         descriptionText.text = if (!isExpanded) fullDescription else fullDescription!!.take(200) + "..."
         descriptionText.maxLines = if (!isExpanded) Int.MAX_VALUE else 5
 
         val animator = ValueAnimator.ofInt(initialHeight, targetHeight)
         animator.addUpdateListener {
-            val layoutParams = descriptionText.layoutParams
-            layoutParams.height = it.animatedValue as Int
-            descriptionText.layoutParams = layoutParams
+            descriptionText.layoutParams.height = it.animatedValue as Int
+            descriptionText.requestLayout()
         }
         animator.duration = 300
         animator.interpolator = AccelerateDecelerateInterpolator()
@@ -147,17 +149,15 @@ class JobDetailsActivity : AppCompatActivity() {
             descriptionText.layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
             expandButton.text = if (isExpanded) "Show Less ▲" else "Read More ▼"
 
-            val springAnim = SpringAnimation(descriptionText, SpringAnimation.TRANSLATION_Y, 0f)
-            springAnim.spring.stiffness = SpringForce.STIFFNESS_LOW
-            springAnim.spring.dampingRatio = SpringForce.DAMPING_RATIO_MEDIUM_BOUNCY
-            springAnim.setStartVelocity(1000f)
-            springAnim.start()
+            SpringAnimation(descriptionText, SpringAnimation.TRANSLATION_Y, 0f).apply {
+                spring.stiffness = SpringForce.STIFFNESS_LOW
+                spring.dampingRatio = SpringForce.DAMPING_RATIO_MEDIUM_BOUNCY
+                setStartVelocity(1000f)
+                start()
+            }
         })
 
-        expandButton.animate()
-            .rotationBy(if (isExpanded) 180f else -180f)
-            .setDuration(300)
-            .start()
+        expandButton.animate().rotationBy(if (isExpanded) 180f else -180f).setDuration(300).start()
     }
 
     override fun onSupportNavigateUp(): Boolean {

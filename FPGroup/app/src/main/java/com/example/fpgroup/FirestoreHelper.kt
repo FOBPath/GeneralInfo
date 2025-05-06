@@ -32,14 +32,24 @@ object FirestoreHelper {
             }
     }
 
-    // Save profile (name and email) to Firestore
-    fun saveProfile(name: String, email: String, onComplete: (Boolean) -> Unit) {
+    // ✅ Save full profile to Firestore
+    fun saveProfile(
+        name: String,
+        email: String,
+        skills: String,
+        experience: String,
+        contact: String,
+        onComplete: (Boolean) -> Unit
+    ) {
         val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return onComplete(false)
         val db = FirebaseFirestore.getInstance()
 
         val userMap = mapOf(
             "name" to name,
-            "email" to email
+            "email" to email,
+            "skills" to skills,
+            "experience" to experience,
+            "contact" to contact
         )
 
         db.collection("users").document(userId)
@@ -54,7 +64,7 @@ object FirestoreHelper {
             }
     }
 
-    // Fetch profile from Firestore
+    // (Optional) Fetch name + email from Firestore
     fun fetchProfile(onResult: (String?, String?) -> Unit) {
         val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return onResult(null, null)
         val db = FirebaseFirestore.getInstance()
@@ -73,7 +83,6 @@ object FirestoreHelper {
             }
     }
 
-    // Save job to Firestore
     fun saveJobToFirestore(job: Job, userId: String, onComplete: (Boolean) -> Unit) {
         val db = FirebaseFirestore.getInstance()
         val jobData = hashMapOf(
@@ -98,7 +107,6 @@ object FirestoreHelper {
             }
     }
 
-    // Fetch saved jobs from Firestore
     fun fetchSavedJobs(userId: String, onResult: (List<Job>) -> Unit) {
         val db = FirebaseFirestore.getInstance()
         db.collection("saved_jobs")
@@ -125,7 +133,6 @@ object FirestoreHelper {
             }
     }
 
-    // Send confirmation email after application
     fun sendEmailConfirmation(context: Context, email: String, jobTitle: String, jobUrl: String?) {
         try {
             val intent = Intent(Intent.ACTION_SENDTO).apply {

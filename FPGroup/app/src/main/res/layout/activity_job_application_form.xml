@@ -1,39 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/applicationScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp"
-    android:orientation="vertical"
-    android:gravity="center_horizontal">
+    android:padding="24dp">
 
-    <TextView
-        android:id="@+id/formHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Apply for this Job"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="24dp" />
-
-    <TextView
-        android:id="@+id/resumeStatusText"
+    <LinearLayout
+        android:id="@+id/applicationContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="No resume selected"
-        android:textColor="@color/textColorSecondary"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"/>
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
-    <Button
-        android:id="@+id/selectResumeButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Upload Resume (PDF)"
-        android:layout_marginBottom="16dp" />
+        <!-- Header -->
+        <TextView
+            android:id="@+id/formHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Job Application"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp" />
 
-    <Button
-        android:id="@+id/submitResumeButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Submit Application" />
-</LinearLayout>
+        <!-- Personal Info -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Personal Information"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/nameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Full Name"
+            android:inputType="textPersonName"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email Address"
+            android:inputType="textEmailAddress"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/phoneEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number"
+            android:inputType="phone"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/addressEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Address"
+            android:inputType="textPostalAddress"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Education -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Education"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <Spinner
+            android:id="@+id/educationSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/education_levels"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Experience -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Experience"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/experienceEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Years of Experience"
+            android:inputType="numberDecimal"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Additional Info -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Additional Information"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/coverLetterEditText"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:hint="Cover Letter"
+            android:inputType="textMultiLine"
+            android:gravity="top"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/linkedinEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="LinkedIn Profile URL"
+            android:inputType="textUri"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/portfolioEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Portfolio / GitHub URL"
+            android:inputType="textUri"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Resume Upload -->
+        <TextView
+            android:id="@+id/resumeStatusText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No resume selected"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/selectResumeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Upload Resume (PDF)"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Submit -->
+        <Button
+            android:id="@+id/submitApplicationButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit Application" />
+
+    </LinearLayout>
+</ScrollView>

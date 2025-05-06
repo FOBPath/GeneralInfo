@@ -25,9 +25,15 @@ class ApplyJobActivity : AppCompatActivity() {
         val genderInput: EditText = findViewById(R.id.inputGender)
         val submitBtn: Button = findViewById(R.id.submitApplicationButton)
 
-        // Auto-fill from SharedPreferences
+        // ✅ Autofill all fields
         nameInput.setText(prefs.getString("name", ""))
         emailInput.setText(prefs.getString("email", ""))
+        locationInput.setText(prefs.getString("location", ""))
+        experienceInput.setText(prefs.getString("experience", ""))
+        educationInput.setText(prefs.getString("education", ""))
+        volunteerInput.setText(prefs.getString("volunteer", ""))
+        raceInput.setText(prefs.getString("race", ""))
+        genderInput.setText(prefs.getString("gender", ""))
 
         val jobTitle = intent.getStringExtra("JOB_TITLE") ?: "Unknown"
         val jobCompany = intent.getStringExtra("JOB_COMPANY") ?: "Unknown"

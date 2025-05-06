@@ -6,11 +6,11 @@
     android:background="@color/colorBackground">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <!-- Header -->
+        <!-- Job Title -->
         <TextView
             android:id="@+id/jobTitleText"
             android:layout_width="match_parent"
@@ -21,6 +21,7 @@
             android:textColor="@color/textColorPrimary"
             android:layout_marginBottom="6dp" />
 
+        <!-- Company -->
         <TextView
             android:id="@+id/jobCompanyText"
             android:layout_width="match_parent"
@@ -29,6 +30,7 @@
             android:textSize="16sp"
             android:textColor="@color/textColorSecondary" />
 
+        <!-- Location -->
         <TextView
             android:id="@+id/jobLocationText"
             android:layout_width="match_parent"
@@ -49,18 +51,28 @@
             android:textColor="@color/textColorSecondary"
             android:layout_marginBottom="16dp" />
 
-        <!-- Description -->
+        <!-- Description Header -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Job Description"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/textColorPrimary"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Job Description -->
         <TextView
             android:id="@+id/descriptionText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Job description goes here..."
+            android:text="Description goes here..."
             android:textColor="@color/textColorPrimary"
             android:maxLines="5"
             android:ellipsize="end"
             android:layout_marginBottom="4dp" />
 
-        <!-- Expand/Collapse -->
+        <!-- Expand/Collapse Button -->
         <Button
             android:id="@+id/expandButton"
             android:layout_width="wrap_content"
@@ -78,11 +90,29 @@
             android:id="@+id/qualificationsText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Qualifications:"
+            android:text="Qualifications: Not specified"
+            android:textColor="@color/textColorPrimary"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Skills -->
+        <TextView
+            android:id="@+id/skillsText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Skills: Not listed"
+            android:textColor="@color/textColorPrimary"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Benefits -->
+        <TextView
+            android:id="@+id/benefitsText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Benefits: Not listed"
             android:textColor="@color/textColorPrimary"
             android:layout_marginBottom="24dp" />
 
-        <!-- Buttons -->
+        <!-- Apply Button -->
         <Button
             android:id="@+id/applyButton"
             android:layout_width="match_parent"
@@ -94,6 +124,7 @@
             android:layout_marginBottom="12dp"
             android:elevation="2dp" />
 
+        <!-- Save Button -->
         <Button
             android:id="@+id/saveButton"
             android:layout_width="match_parent"
@@ -103,5 +134,6 @@
             android:textColor="@color/white"
             android:backgroundTint="@color/button_focused"
             android:elevation="2dp" />
+
     </LinearLayout>
 </ScrollView>

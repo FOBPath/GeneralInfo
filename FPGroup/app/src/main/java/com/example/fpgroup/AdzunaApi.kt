@@ -14,3 +14,10 @@ object AdzunaApi {
             .create(JobApiService::class.java)
     }
 }
+
+
+
+
+
+
+

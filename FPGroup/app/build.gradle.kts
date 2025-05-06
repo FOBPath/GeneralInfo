@@ -57,6 +57,7 @@ dependencies {
 
     // Glide for Image Loading
     implementation("com.github.bumptech.glide:glide:4.15.1")
+    implementation("com.google.firebase:firebase-messaging-ktx") // No version
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
 
     // Testing Dependencies

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:weightSum="1">
+    android:padding="16dp">
+
+    <!-- Header -->
     <TextView
         android:id="@+id/jobsHeader"
         android:layout_width="match_parent"
@@ -15,96 +15,103 @@
         android:text="Explore STEM Opportunities"
         android:textStyle="bold"
         android:textSize="22sp"
-        android:layout_marginBottom="8dp"
-        android:gravity="center" />
+        android:gravity="center"
+        android:layout_marginBottom="12dp" />
 
-    <!-- Search Bar -->
+    <!-- SearchView -->
     <androidx.appcompat.widget.SearchView
         android:id="@+id/jobSearchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:queryHint="Search STEM jobs..."
-        android:layout_marginBottom="8dp" />
+        android:queryHint="Search by title..." />
 
-    <!-- Horizontal Scroll View for Chips -->
-    <!-- Horizontal Scroll View for Chips -->
+    <!-- Location -->
+    <EditText
+        android:id="@+id/locationInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter location (e.g., New York)"
+        android:layout_marginTop="8dp"
+        android:inputType="text" />
+
+    <!-- Salary -->
+    <EditText
+        android:id="@+id/salaryRangeInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter salary range (e.g., 40k-100k)"
+        android:layout_marginTop="8dp"
+        android:inputType="text" />
+
+    <!-- Clear Filters -->
+    <Button
+        android:id="@+id/clearFiltersBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear Filters"
+        android:layout_gravity="end"
+        android:layout_marginTop="8dp" />
+
+    <!-- Chip Filters -->
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:layout_marginBottom="8dp"
-        android:fillViewport="true"
         android:scrollbars="none">
 
-        <LinearLayout
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupFilters"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            app:singleSelection="false"
+            app:chipSpacing="8dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp">
 
-            <!-- CHIP GROUP correctly here -->
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/chipGroupFilters"
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCyber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:singleSelection="false"
-                app:chipSpacing="8dp">
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:text="Cyber"
+                android:checkable="true" />
 
-                <!-- Now your Chips inside this ChipGroup -->
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chipCyber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:text="Cyber"
-                    android:textColor="@android:color/black"
-                    android:checkable="true"
-                    app:chipStrokeColor="@color/purple_500"
-                    app:chipStrokeWidth="1dp"
-                    app:chipBackgroundColor="@android:color/white" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipSoftwareDev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:text="Software Dev"
+                android:checkable="true" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chipSoftwareDev"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:text="Software Development"
-                    android:textColor="@android:color/black"
-                    android:checkable="true"
-                    app:chipStrokeColor="@color/purple_500"
-                    app:chipStrokeWidth="1dp"
-                    app:chipBackgroundColor="@android:color/white" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipEngineer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:text="Engineer"
+                android:checkable="true" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chipEngineer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:text="Engineer"
-                    android:textColor="@android:color/black"
-                    android:checkable="true"
-                    app:chipStrokeColor="@color/purple_500"
-                    app:chipStrokeWidth="1dp"
-                    app:chipBackgroundColor="@android:color/white" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipIT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:text="IT"
+                android:checkable="true" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chipIT"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:text="IT"
-                    android:textColor="@android:color/black"
-                    android:checkable="true"
-                    app:chipStrokeColor="@color/purple_500"
-                    app:chipStrokeWidth="1dp"
-                    app:chipBackgroundColor="@android:color/white" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipIntern"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:text="Internship"
+                android:checkable="true" />
 
-            </com.google.android.material.chip.ChipGroup>
-
-        </LinearLayout>
-
+        </com.google.android.material.chip.ChipGroup>
     </HorizontalScrollView>
 
-    <!-- Loading Spinner -->
+    <!-- Loading -->
     <ProgressBar
         android:id="@+id/loadingSpinner"
         android:layout_width="wrap_content"
@@ -114,7 +121,7 @@
         style="?android:attr/progressBarStyleLarge"
         android:layout_marginTop="16dp" />
 
-    <!-- No Jobs Found Text -->
+    <!-- No Jobs -->
     <TextView
         android:id="@+id/noJobsText"
         android:layout_width="match_parent"
@@ -124,9 +131,9 @@
         android:textColor="@android:color/darker_gray"
         android:gravity="center"
         android:visibility="gone"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="16dp" />
 
-    <!-- Jobs RecyclerView -->
+    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/jobsRecyclerView"
         android:layout_width="match_parent"

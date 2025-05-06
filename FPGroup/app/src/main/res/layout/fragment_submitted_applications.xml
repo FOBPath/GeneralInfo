@@ -17,5 +17,15 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/applicationsRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/exportButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Export Applications"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/purple_500"
+        android:textColor="@android:color/white"/>
 </LinearLayout>

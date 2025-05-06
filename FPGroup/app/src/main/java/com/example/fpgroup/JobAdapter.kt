@@ -35,12 +35,14 @@ class JobAdapter(private val jobList: MutableList<Job>) : RecyclerView.Adapter<J
                 putExtra("JOB_URL", job.redirect_url)
                 putExtra("JOB_SALARY", job.salary ?: "Not listed")
                 putExtra("JOB_QUALIFICATIONS", job.qualifications ?: "Not specified")
+                putExtra("JOB_SKILLS", job.skills?.joinToString(", ") ?: "Not listed")
+                putExtra("JOB_BENEFITS", job.benefits?.joinToString(", ") ?: "Not listed")
             }
             holder.itemView.context.startActivity(intent)
         }
     }
 
-    override fun getItemCount() = jobList.size
+    override fun getItemCount(): Int = jobList.size
 
     fun updateJobs(newJobs: List<Job>) {
         jobList.clear()

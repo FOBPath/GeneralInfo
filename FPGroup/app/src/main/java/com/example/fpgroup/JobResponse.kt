@@ -11,7 +11,9 @@ data class Job(
     val description: String,
     val redirect_url: String,
     val salary: String? = null,
-    val qualifications: String? = null
+    val qualifications: String? = null,
+    val skills: List<String>? = null, //
+    val benefits: List<String>? = null //
 )
 
 data class Company(val display_name: String)
