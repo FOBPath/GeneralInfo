@@ -14,9 +14,12 @@ import com.google.firebase.messaging.RemoteMessage
 class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
-        remoteMessage.notification?.let {
-            sendNotification(it.title, it.body)
-        }
+        val title = remoteMessage.notification?.title ?: remoteMessage.data["title"]
+        val message = remoteMessage.notification?.body ?: remoteMessage.data["body"]
+
+        Log.d("FCM", "Message received: $title - $message")
+
+        sendNotification(title, message)
     }
 
     private fun sendNotification(title: String?, message: String?) {
@@ -24,17 +27,19 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val notificationManager =
             getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        val intent = Intent(this, MainActivity::class.java) // or JobsFragment target
-        val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+        val intent = Intent(this, MainActivity::class.java)
+        val pendingIntent = PendingIntent.getActivity(
+            this, 0, intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
 
         val builder = NotificationCompat.Builder(this, channelId)
-            .setSmallIcon(R.drawable.ic_notification) // custom icon in drawable
+            .setSmallIcon(R.drawable.ic_notification) // Use your icon
             .setContentTitle(title ?: "New Job Alert!")
-            .setContentText(message ?: "A new job is available to apply!")
+            .setContentText(message ?: "You have a new notification.")
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
 
-        // Required for Android 8+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 channelId,
@@ -44,6 +49,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             notificationManager.createNotificationChannel(channel)
         }
 
-        notificationManager.notify(0, builder.build())
+        notificationManager.notify(System.currentTimeMillis().toInt(), builder.build())
     }
 }

@@ -53,4 +53,8 @@
     <item name="clearFiltersButton" type="id" />
     <item name="submittedApplicationsContainer" type="id" />
     <item name="withdrawButton" type="id" />
+    <item name="exportApplicationsBtn" type="id" />
+    <item name="trackingRecyclerView" type="id" />
+    <item name="itemEmail" type="id" />
+    <item name="itemDate" type="id" />
 </resources>
